@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Form</title>
+</head>
+
+<body>
+
+<h2>User Registration</h2>
+
+<label>Name</label><br>
+<input id="name"><br><br>
+
+<label>Mobile</label><br>
+<input id="mobile"><br><br>
+
+<label>City</label><br>
+<input id="city"><br><br>
+
+<button onclick="submitForm()">Submit</button>
+
+<script>
+
+function submitForm(){
+
+const data = {
+ name: document.getElementById("name").value,
+ mobile: document.getElementById("mobile").value,
+ city: document.getElementById("city").value
+};
+
+fetch("YOUR_SCRIPT_URL",{
+ method:"POST",
+ headers:{
+  "Content-Type":"application/json"
+ },
+ body: JSON.stringify(data)
+})
+.then(res=>res.text())
+.then(msg=>{
+ alert("Data saved successfully");
+});
+
+}
+
+</script>
+
+</body>
+</html>
