@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>User Form</title>
+<title>Data Collection Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-</head>
-
-<body>
-
-<h2>User Registration 5</h2>
-
-<form action="https://script.google.com/macros/s/AKfycbw1OKAgcyuA95EkOGjtThLTg0DrobVlG6LJRsj-JB4BozS0WkP7GsvvqGAy7PvaS07oHw/exec" method="POST" target="hiddenFrame">
-
-<label>Name</label><br>
-<input name="name" required><br><br>
-
-<label>Mobile</label><br>
-<input name="mobile" required><br><br>
-
-<label>City</label><br>
-<input name="city" required><br><br>
-
-<button type="submit" onclick="showMsg()">Submit</button>
-
-</form>
-
-<iframe name="hiddenFrame" style="display:none;"></iframe>
-
-<script>
-
-function showMsg(){
- setTimeout(function(){
-  alert("Data saved successfully");
- },500);
+<style>
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f2f2f2;
+margin:0;
+padding:20px;
 }
-
+.container{
+max-width:420px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+label{
+font-weight:bold;
+display:block;
+margin-top:10px;
+}
+input{
+width:100%;
+padding:12px;
+margin-top:5px;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:16px;
+box-sizing:border-box;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:none;
+background:#007BFF;
+color:white;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#0056b3;
+}
+.success{
+display:none;
+margin-top:15px;
+color:green;
+text-align:center;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>User Registration</h2>
+<form id="dataForm"
+action="https://script.google.com/macros/s/AKfycbw1OKAgcyuA95EkOGjtThLTg0DrobVlG6LJRsj-JB4BozS0WkP7GsvvqGAy7PvaS07oHw/exec"
+method="POST"
+target="hiddenFrame">
+<label>Name</label>
+<input type="text" name="name" placeholder="Enter full name" required>
+<label>Mobile</label>
+<input type="tel" name="mobile" placeholder="Enter mobile number" required>
+<label>City</label>
+<input type="text" name="city" placeholder="Enter city" required>
+<button type="submit" onclick="showMsg()">Submit</button>
+</form>
+<div class="success" id="successMsg">
+✔ Data saved successfully
+</div>
+</div>
+<iframe name="hiddenFrame" style="display:none;"></iframe>
+<script>
+function showMsg(){
+setTimeout(function(){
+document.getElementById("successMsg").style.display="block";
+document.getElementById("dataForm").reset();
+setTimeout(function(){
+document.getElementById("successMsg").style.display="none";
+},3000);
+},600);
+}
 </script>
-
 </body>
 </html>
