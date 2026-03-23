@@ -2,42 +2,36 @@
 <html>
 <head>
 <title>User Form</title>
+<link rel="icon" href="data:,">
 </head>
 
 <body>
 
-<h2>User Registration 2</h2>
+<h2>User Registration 4</h2>
+
+<form action="https://script.google.com/macros/s/AKfycbwQ3609JjeJRoyuswNbLhzoV3BBQsY0mf_5s1D7NCYJjT-DGCvg3nEvn-gOkgMvAu9e/exec" method="POST" target="hiddenFrame">
 
 <label>Name</label><br>
-<input id="name"><br><br>
+<input name="name" required><br><br>
 
 <label>Mobile</label><br>
-<input id="mobile"><br><br>
+<input name="mobile" required><br><br>
 
 <label>City</label><br>
-<input id="city"><br><br>
+<input name="city" required><br><br>
 
-<button onclick="submitForm()">Submit</button>
+<button type="submit" onclick="showMsg()">Submit</button>
+
+</form>
+
+<iframe name="hiddenFrame" style="display:none;"></iframe>
 
 <script>
 
-function submitForm(){
-
-var formData = new FormData();
-
-formData.append("name", document.getElementById("name").value);
-formData.append("mobile", document.getElementById("mobile").value);
-formData.append("city", document.getElementById("city").value);
-
-fetch("https://script.google.com/macros/s/AKfycbwQ3609JjeJRoyuswNbLhzoV3BBQsY0mf_5s1D7NCYJjT-DGCvg3nEvn-gOkgMvAu9e/exec",{
- method:"POST",
- body: formData
-})
-.then(res => res.text())
-.then(data => {
- alert("Data saved successfully");
-});
-
+function showMsg(){
+ setTimeout(function(){
+  alert("Data saved successfully");
+ },500);
 }
 
 </script>
