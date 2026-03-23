@@ -6,7 +6,7 @@
 
 <body>
 
-<h2>User Registration 1</h2>
+<h2>User Registration 2</h2>
 
 <label>Name</label><br>
 <input id="name"><br><br>
@@ -23,21 +23,18 @@
 
 function submitForm(){
 
-const data = {
- name: document.getElementById("name").value,
- mobile: document.getElementById("mobile").value,
- city: document.getElementById("city").value
-};
+var formData = new FormData();
+
+formData.append("name", document.getElementById("name").value);
+formData.append("mobile", document.getElementById("mobile").value);
+formData.append("city", document.getElementById("city").value);
 
 fetch("https://script.google.com/macros/s/AKfycbwQ3609JjeJRoyuswNbLhzoV3BBQsY0mf_5s1D7NCYJjT-DGCvg3nEvn-gOkgMvAu9e/exec",{
  method:"POST",
- headers:{
-  "Content-Type":"application/json"
- },
- body: JSON.stringify(data)
+ body: formData
 })
-.then(res=>res.text())
-.then(msg=>{
+.then(res => res.text())
+.then(data => {
  alert("Data saved successfully");
 });
 
