@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lottie Test</title>
+
+<script src="lottie.min.js"></script>
+
+<style>
+body{
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+#anim{
+width:300px;
+height:300px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="anim"></div>
+
+<script>
+
+lottie.loadAnimation({
+container: document.getElementById("anim"),
+renderer: "svg",
+loop: true,
+autoplay: true,
+path: "animation.json"
+});
+
+</script>
+
+</body>
+</html>
